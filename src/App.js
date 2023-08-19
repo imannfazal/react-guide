@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import Person from "./Person/Person";
+import Person from "./components/Person/Person";
+import UserOuput from "./components/UserOutput/UserOuput";
+import UserInput from "./components/UserInput/UserInput";
 
 const App = () => {
+  const [userName, setUsername] = useState('iman');
   const [personsState, setPersonsState] = useState({
     persons: [
       { name: 'max', age: 12 },
@@ -22,7 +25,7 @@ const App = () => {
     );
   }
 
-  const nameChangedHandler = (event) =>{
+  const nameChangedHandler = (event) => {
     setPersonsState(
       {
         persons: [
@@ -34,12 +37,19 @@ const App = () => {
     );
   }
 
+  const usernameHandler = (event) =>{
+    setUsername(event.target.value);
+  }
+
 
   return (
     <div>
       <button onClick={switchNameHandler}>Switch name</button>
       <Person change={nameChangedHandler} name={personsState.persons[0].name} >Hobbies are racing, sketching</Person>
       <Person name={personsState.persons[2].name} ></Person>
+      <UserInput current={userName} changed={usernameHandler} />
+      <UserOuput username={userName} />
+      <UserOuput username={userName} />
 
     </div>
   );
