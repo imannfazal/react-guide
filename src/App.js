@@ -26,7 +26,7 @@ const App = () => {
   return (
     <div>
       <button onClick={switchNameHandler}>Switch name</button>
-      <Person name={personsState.persons[0].name} >Hobbies are racing, sketching</Person>
+      <Person change={switchNameHandler} name={personsState.persons[0].name} >Hobbies are racing, sketching</Person>
       <Person name={personsState.persons[2].name} ></Person>
 
     </div>
