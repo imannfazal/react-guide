@@ -22,11 +22,23 @@ const App = () => {
     );
   }
 
+  const nameChangedHandler = (event) =>{
+    setPersonsState(
+      {
+        persons: [
+          { name: event.target.value, age: 12 },
+          { name: 'laiba', age: 42 },
+          { name: event.target.value, age: 2 },
+        ]
+      }
+    );
+  }
+
 
   return (
     <div>
       <button onClick={switchNameHandler}>Switch name</button>
-      <Person change={switchNameHandler} name={personsState.persons[0].name} >Hobbies are racing, sketching</Person>
+      <Person change={nameChangedHandler} name={personsState.persons[0].name} >Hobbies are racing, sketching</Person>
       <Person name={personsState.persons[2].name} ></Person>
 
     </div>
