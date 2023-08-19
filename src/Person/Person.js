@@ -2,7 +2,7 @@ import React from 'react'
 
 const person = () => {
   return (
-    <div>Person</div>
+    <div>Person {Math.floor(Math.random()*30)}</div>
   )
 }
 
