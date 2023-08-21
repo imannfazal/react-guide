@@ -46,13 +46,19 @@ const App = () => {
     setShowPersons(!showPersons);
   }
 
+  const deletePersonHandler = (personIndex) =>{
+    const persons = personsState.persons;
+    persons.splice(personIndex,1);
+    setPersonsState({persons: persons})
+  }
+
   let persons = null;
 
   if (showPersons === true) {
     persons = (
       <div>
-        {personsState.persons.map(person =>{
-          return <Person name={person.name} age={person.age} />
+        {personsState.persons.map((person, index) =>{
+          return <Person name={person.name} age={person.age} click={()=>deletePersonHandler(index)} />
         })} 
       </div>
     )
