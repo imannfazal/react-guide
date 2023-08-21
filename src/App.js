@@ -26,17 +26,30 @@ const App = () => {
   //   );
   // }
 
-  // const nameChangedHandler = (event) => {
-  //   setPersonsState(
-  //     {
-  //       persons: [
-  //         { name: event.target.value, age: 12 },
-  //         { name: 'laiba', age: 42 },
-  //         { name: event.target.value, age: 2 },
-  //       ]
-  //     }
-  //   );
-  // }
+  const nameChangedHandler = (event, id) => {
+    const personIndex = personsState.persons.findIndex(p => {
+      return p.id === id;
+    })
+    const person = {
+      ...personsState.persons[personIndex]
+    }
+
+    person.name = event.target.value;
+
+    const persons = [...personsState.persons];
+    persons[personIndex] = person;
+    setPersonsState({persons:persons});
+
+    setPersonsState(
+      {
+        persons: [
+          { name: event.target.value, age: 12 },
+          { name: 'laiba', age: 42 },
+          { name: event.target.value, age: 2 },
+        ]
+      }
+    );
+  }
 
   const usernameHandler = (event) => {
     setUsername(event.target.value);
@@ -64,6 +77,7 @@ const App = () => {
             age={person.age}
             click={() => deletePersonHandler(index)}
             key ={person.id}
+            change={(event)=>nameChangedHandler(event, person.id)}
           />
         })}
       </div>

@@ -6,7 +6,7 @@ const person = (props) => {
       <button onClick={props.click}>Delete person</button>
       <p>Person name is {props.name}</p>
       <div>{props.children}</div>
-      <input className='input' onChange={props.change} value={props.name} />
+      <input type='text' className='input' onChange={props.change} value={props.name} />
     </div>
   )
 }
