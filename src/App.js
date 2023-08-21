@@ -5,6 +5,7 @@ import UserInput from "./components/UserInput/UserInput";
 
 const App = () => {
   const [userName, setUsername] = useState('iman');
+  const [showPersons, setShowPersons] = useState(false);
   const [personsState, setPersonsState] = useState({
     persons: [
       { name: 'max', age: 12 },
@@ -37,16 +38,25 @@ const App = () => {
     );
   }
 
-  const usernameHandler = (event) =>{
+  const usernameHandler = (event) => {
     setUsername(event.target.value);
+  }
+
+  const togglePersonsHandler = () => {
+    setShowPersons(!showPersons);
   }
 
 
   return (
     <div>
-      <button onClick={switchNameHandler}>Switch name</button>
-      <Person change={nameChangedHandler} name={personsState.persons[0].name} >Hobbies are racing, sketching</Person>
-      <Person name={personsState.persons[2].name} ></Person>
+      <button onClick={togglePersonsHandler}>Show persons</button>
+      {
+        (showPersons===true) ?
+          <div>
+            <Person change={nameChangedHandler} name={personsState.persons[0].name} >Hobbies are racing, sketching</Person>
+            <Person name={personsState.persons[2].name} ></Person>
+          </div> : null
+      }
       <UserInput current={userName} changed={usernameHandler} />
       <UserOuput username={userName} />
       <UserOuput username={userName} />
