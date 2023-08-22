@@ -9,9 +9,9 @@ const Char = (props) => {
         border: '1px solid black',
     }
     return (
-        <div onClick={props.click} style={style}>
+        <button type='button' onClick={props.click} style={style}>
             {props.character}
-        </div>
+        </button>
     )
 }
 

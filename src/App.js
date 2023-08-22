@@ -6,7 +6,7 @@ import Validation from "./components/Validation/Validation";
 import Char from "./components/Char/Char";
 
 const App = () => {
-  const[userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState('');
   const [userName, setUsername] = useState('iman');
   const [showPersons, setShowPersons] = useState(false);
   const [personsState, setPersonsState] = useState({
@@ -91,15 +91,18 @@ const App = () => {
     setUserInput(event.target.value);
   }
 
-  const charList = userInput.split('').map((ch, index)=>{
-    return <Char click={()=>deleteCharHandler(index)} key={index} character={ch} />
+  const charList = userInput.split('').map((ch, index) => {
+    return <Char
+      click={() => deleteCharHandler(index)}
+      key={index}
+      character={ch} />
   });
 
   const deleteCharHandler = (index) => {
     const chars = userInput.split('');
     chars.splice(index, 1);
     const updatedText = chars.join('');
-    setUserInput({userInput: updatedText});
+    setUserInput(updatedText);
   }
 
   return (
@@ -109,9 +112,10 @@ const App = () => {
       <UserInput current={userName} changed={usernameHandler} />
       <UserOuput username={userName} />
       <UserOuput username={userName} />
-      <input type="userInput" onChange={wordCountHandler} />
+      <input value={userInput} type="userInput" onChange={wordCountHandler} />
       {/* <p>{count}</p> */}
       <Validation length={userInput.length} />
+      {userInput}
       {charList}
     </div>
   );
