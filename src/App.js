@@ -38,7 +38,7 @@ const App = () => {
 
     const persons = [...personsState.persons];
     persons[personIndex] = person;
-    setPersonsState({persons:persons});
+    setPersonsState({ persons: persons });
 
     setPersonsState(
       {
@@ -72,13 +72,13 @@ const App = () => {
     persons = (
       <div>
         {personsState.persons.map((person, index) => {
-          return <Person
-            name={person.name}
-            age={person.age}
-            click={() => deletePersonHandler(index)}
-            key ={person.id}
-            change={(event)=>nameChangedHandler(event, person.id)}
-          />
+          return <li key={person.id}>
+            <Person
+              name={person.name}
+              age={person.age}
+              click={() => deletePersonHandler(index)}
+              change={(event) => nameChangedHandler(event, person.id)}
+            /></li>
         })}
       </div>
     )
@@ -88,7 +88,7 @@ const App = () => {
   return (
     <div>
       <button onClick={togglePersonsHandler}>Show persons</button>
-      {persons}
+      <ul>{persons}</ul>
       <UserInput current={userName} changed={usernameHandler} />
       <UserOuput username={userName} />
       <UserOuput username={userName} />
