@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Person from "./components/Person/Person";
 import UserOuput from "./components/UserOutput/UserOuput";
 import UserInput from "./components/UserInput/UserInput";
+import Validation from "./components/Validation/Validation";
 
 const App = () => {
+  const[text, setText] = useState('');
   const [userName, setUsername] = useState('iman');
   const [showPersons, setShowPersons] = useState(false);
   const [personsState, setPersonsState] = useState({
@@ -84,6 +86,10 @@ const App = () => {
     )
   }
 
+  const wordCountHandler = (event) => {
+    setText(event.target.value);
+  }
+ 
 
   return (
     <div>
@@ -92,10 +98,12 @@ const App = () => {
       <UserInput current={userName} changed={usernameHandler} />
       <UserOuput username={userName} />
       <UserOuput username={userName} />
+      <input type="text" onChange={wordCountHandler} />
+      {/* <p>{count}</p> */}
+      <Validation length={text.length} />
 
     </div>
   );
 }
-
 
 export default App;
