@@ -3,9 +3,10 @@ import Person from "./components/Person/Person";
 import UserOuput from "./components/UserOutput/UserOuput";
 import UserInput from "./components/UserInput/UserInput";
 import Validation from "./components/Validation/Validation";
+import Char from "./components/Char/Char";
 
 const App = () => {
-  const[text, setText] = useState('');
+  const[userInput, setUserInput] = useState('');
   const [userName, setUsername] = useState('iman');
   const [showPersons, setShowPersons] = useState(false);
   const [personsState, setPersonsState] = useState({
@@ -87,9 +88,19 @@ const App = () => {
   }
 
   const wordCountHandler = (event) => {
-    setText(event.target.value);
+    setUserInput(event.target.value);
   }
- 
+
+  const charList = userInput.split('').map((ch, index)=>{
+    return <Char click={()=>deleteCharHandler(index)} key={index} character={ch} />
+  });
+
+  const deleteCharHandler = (index) => {
+    const chars = userInput.split('');
+    chars.splice(index, 1);
+    const updatedText = chars.join('');
+    setUserInput({userInput: updatedText});
+  }
 
   return (
     <div>
@@ -98,10 +109,10 @@ const App = () => {
       <UserInput current={userName} changed={usernameHandler} />
       <UserOuput username={userName} />
       <UserOuput username={userName} />
-      <input type="text" onChange={wordCountHandler} />
+      <input type="userInput" onChange={wordCountHandler} />
       {/* <p>{count}</p> */}
-      <Validation length={text.length} />
-
+      <Validation length={userInput.length} />
+      {charList}
     </div>
   );
 }
