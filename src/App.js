@@ -66,7 +66,7 @@ const App = () => {
     //const persons = personsState.persons.slice();
     const persons = [...personsState.persons];
     persons.splice(personIndex, 1);
-    setPersonsState(persons)
+    setPersonsState({ persons: persons })
   }
 
   let persons = null;
