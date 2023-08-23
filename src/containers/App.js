@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Person from "./components/Person/Person";
-import UserOuput from "./components/UserOutput/UserOuput";
-import UserInput from "./components/UserInput/UserInput";
-import Validation from "./components/Validation/Validation";
-import Char from "./components/Char/Char";
+import Person from "../components/Person/Person";
+import UserOuput from "../components/UserOutput/UserOuput";
+import UserInput from "../components/UserInput/UserInput";
+import Validation from "../components/Validation/Validation";
+import Char from "../components/Char/Char";
 
 const App = () => {
   const [userInput, setUserInput] = useState('');
