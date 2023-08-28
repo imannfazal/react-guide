@@ -1,6 +1,7 @@
 import React from 'react'
 
 const UserOuput = (props) => {
+  
   return (
     <div>
       <p>Some text!!!</p>
