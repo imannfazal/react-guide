@@ -1,11 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-const Char = (props) => {
-    useEffect(()=>{
-        setTimeout(()=>{
-          alert('output updated!')
-        },1000)
-      },[props.character])
+const Char = (props) => {  
     const style = {
         display: 'inline-block',
         padding: '16px',
@@ -20,4 +15,4 @@ const Char = (props) => {
     )
 }
 
-export default Char
+export default Char;
