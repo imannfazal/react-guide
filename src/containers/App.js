@@ -4,6 +4,7 @@ import UserOuput from "../components/UserOutput/UserOuput";
 import UserInput from "../components/UserInput/UserInput";
 import Validation from "../components/Validation/Validation";
 import Char from "../components/Char/Char";
+import Auxilliary from "../components/hoc/Auxilliary";
 
 const App = () => {
   const [userInput, setUserInput] = useState('');
@@ -106,7 +107,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <Auxilliary>
       <button onClick={togglePersonsHandler}>Show persons</button>
       <ul>{persons}</ul>
       <UserInput current={userName} changed={usernameHandler} />
@@ -117,7 +118,7 @@ const App = () => {
       <Validation length={userInput.length} />
       {userInput}
       {charList}
-    </div>
+    </Auxilliary>
   );
 }
 
