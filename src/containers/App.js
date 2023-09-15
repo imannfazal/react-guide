@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Person from "../components/Person/Person";
 import UserOuput from "../components/UserOutput/UserOuput";
 import UserInput from "../components/UserInput/UserInput";
@@ -19,6 +19,12 @@ const App = () => {
       { id: 'mn', name: 'me', age: 2 },
     ]
   })
+
+  const toggleBtnRef = useRef(null);
+
+  useEffect(()=>{
+    toggleBtnRef.current.click();
+  },[]);
 
   // const switchNameHandler = () => {
   //   setPersonsState(
@@ -110,7 +116,7 @@ const App = () => {
 
   return (
     <Auxilliary>
-      <button onClick={togglePersonsHandler}>Show persons</button>
+      <button ref={toggleBtnRef} onClick={togglePersonsHandler}>Show persons</button>
       <ul>{persons}</ul>
       <UserInput current={userName} changed={usernameHandler} />
       <UserOuput username={userName} />
